@@ -1,15 +1,16 @@
 // Root
-fileReferenceOrigins#fe633fe7 db_schema:string db_schema_json:string ctxs:Vector<Origin> = FileReferenceOrigins;
+fileReferenceOrigins#45a1a693 db_schema:string db_schema_json:string ctxs:Vector<Origin> skipped:Vector<SkippedOrigin>= FileReferenceOrigins;
 
-origin#72cc7c04 flags:# predicate:string is_constructor:flags.0?true action:ActionOp needs_parent:flags.3?string parent_is_constructor:flags.4?true = origin;
+origin#24443b33 flags:# predicate:string is_constructor:flags.0?true action:ActionOp stored_constructor:string skipped_flags:Vector<string> needs_parent:flags.3?string parent_is_constructor:flags.4?true = origin;
+
+skippedOrigin#7c62809e flags:# predicate:string is_constructor:flags.0?true why:string = SkippedOrigin;
+
+// Actions
+callOp#c2ff3383 method:string args:Vector<TypedOpArg> = ActionOp;
+getMessageOp#84b69f70 flags:# peer:TypedOp id:TypedOp from_scheduled:flags.0?TypedOp = ActionOp;
 
 // For string => TypedOp dictionaries
 typedOpArg#3a2930c2 key:string value:TypedOp = TypedOpArg;
-
-// Actions
-callOp#95a107ea method:string args:Vector<TypedOpArg> stored_constructor:string skipped_flags:Vector<string> = ActionOp;
-getMessageOp#defc2466 flags:# peer:TypedOp id:TypedOp from_scheduled:flags.0?TypedOp stored_constructor:string skipped_flags:Vector<string> = ActionOp;
-noOp#c4d8df73 why:string = ActionOp;
 
 // Field extraction path
 paramNotFlag#acd9d5cf = ParamFlag;
