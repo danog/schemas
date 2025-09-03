@@ -1,3 +1,6 @@
+boolFalse#bc799737 = Bool;
+boolTrue#997275b5 = Bool;
+
 // Root
 fileReferenceOrigins#63adca68 db_schema:string db_schema_json:string origins:Vector<Origin> skipped:Vector<SkippedOrigin> actions:Vector<Action> = FileReferenceOrigins;
 
