@@ -19,19 +19,19 @@ path#0c3586a2 parts:Vector<PathPart> = Path;
 pathParent#58f13684 parts:Vector<PathPart> = Path;
 
 // Extractor
-extractAndStore#9949c53d from:Path = FieldExtractor;
+extractAndStore#72069549 from:Path to:string = FieldExtractor;
 
-extractInputStickerSetFromDocumentAttributesAndStore#97693505 from:Path = FieldExtractor;
-extractInputStickerSetFromStickerSetAndStore#afbe2a0d from:Path = FieldExtractor;
+extractInputStickerSetFromDocumentAttributesAndStore#369d8d14 from:Path to:string = FieldExtractor;
+extractInputStickerSetFromStickerSetAndStore#c167d470 from:Path to:string = FieldExtractor;
 
-extractPeerIdFromPeerAndStore#ceddb13c from:Path = FieldExtractor;
-extractPeerIdFromInputPeerAndStore#4ab433ab from:Path = FieldExtractor;
+extractPeerIdFromPeerAndStore#7d33019c from:Path to:string = FieldExtractor;
+extractPeerIdFromInputPeerAndStore#a51acfb4 from:Path to:string = FieldExtractor;
 
-extractChannelIdFromChannelAndStore#beada97b from:Path = FieldExtractor;
-extractChannelIdFromInputChannelAndStore#6ffda218 from:Path = FieldExtractor;
+extractChannelIdFromChannelAndStore#5675bc97 from:Path to:string = FieldExtractor;
+extractChannelIdFromInputChannelAndStore#b662660e from:Path to:string = FieldExtractor;
 
-extractUserIdFromUserAndStore#709053c5 from:Path = FieldExtractor;
-extractUserIdFromInputUserAndStore#91d456f9 from:Path = FieldExtractor;
+extractUserIdFromUserAndStore#4778ec63 from:Path to:string = FieldExtractor;
+extractUserIdFromInputUserAndStore#7720aa2e from:Path to:string = FieldExtractor;
 
 // Actions
 callOp#c2ff3383 method:string args:Vector<TypedOpArg> = ActionOp;
