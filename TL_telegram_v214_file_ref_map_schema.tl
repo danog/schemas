@@ -1,5 +1,8 @@
 boolFalse#bc799737 = Bool;
 boolTrue#997275b5 = Bool;
+true#3fedd339 = True;
+
+vector#1cb5c415 {t:Type} # [ t ] = Vector t;
 
 // Root
 fileReferenceOrigins#ed01a4f1 db_schema:string db_schema_json:string locations:Vector<Location> origins:Vector<Origin> skipped:Vector<SkippedOrigin> actions:Vector<Action> = FileReferenceOrigins;
