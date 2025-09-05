@@ -22,7 +22,7 @@ paramIsFlagAbortIfEmpty#f8fe9fee = ParamFlag;
 paramIsFlagFallback#202b77a1 fallback:TypedOp = ParamFlag;
 paramIsFlagPassthrough#1dc6e17d = ParamFlag;
 
-pathPart#7b8b07d4 flags:# constructor:string param:string flag:ParamFlag = PathPart;
+pathPart#8dc6ff46 constructor:string param:string flag:ParamFlag = PathPart;
 
 path#0c3586a2 parts:Vector<PathPart> = Path;
 pathParent#58f13684 parts:Vector<PathPart> = Path;
@@ -44,7 +44,7 @@ extractUserIdFromInputUserAndStore#7720aa2e from:Path to:string = FieldExtractor
 
 // Actions
 callOp#c2ff3383 method:string args:Vector<TypedOpArg> = ActionOp;
-getMessageOp#84b69f70 flags:# peer:TypedOp id:TypedOp from_scheduled:flags.0?TypedOp = ActionOp;
+getMessageOp#b51d9468 peer:TypedOp id:TypedOp from_scheduled:TypedOp = ActionOp;
 
 // For string => TypedOp dictionaries
 typedOpArg#3a2930c2 key:string value:TypedOp = TypedOpArg;
