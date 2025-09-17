@@ -44,7 +44,7 @@ extractUserIdFromInputUserAndStore#7720aa2e from:Path to:string = FieldExtractor
 
 // Actions
 callOp#c2ff3383 method:string args:Vector<TypedOpArg> = ActionOp;
-getMessageOp#b51d9468 peer:TypedOp id:TypedOp from_scheduled:TypedOp = ActionOp;
+getMessageOp#237849e8 peer:TypedOp id:TypedOp from_scheduled:TypedOp quick_reply_shortcut_id:TypedOp = ActionOp;
 
 // For string => TypedOp dictionaries
 typedOpArg#3a2930c2 key:string value:TypedOp = TypedOpArg;

@@ -383,7 +383,7 @@
             "type": "ActionOp"
         },
         {
-            "id": "-1256352664",
+            "id": "595085800",
             "predicate": "getMessageOp",
             "params": [
                 {
@@ -396,6 +396,10 @@
                 },
                 {
                     "name": "from_scheduled",
+                    "type": "TypedOp"
+                },
+                {
+                    "name": "quick_reply_shortcut_id",
                     "type": "TypedOp"
                 }
             ],
