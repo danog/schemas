@@ -69,6 +69,7 @@ vectorOp#f8fb8f72 values:Vector<TypedOp> = TypedOpOp;
 intLiteralOp#cbfabe7c value:int = TypedOpOp;
 longLiteralOp#d08b8d3a value:long = TypedOpOp;
 stringLiteralOp#2b56ea8e value:string = TypedOpOp;
+bytesLiteralOp#fdb395a4 value:bytes = TypedOpOp;
 boolLiteralOp#37e07911 value:Bool = TypedOpOp;
 doubleLiteralOp#3651e3bf value:double = TypedOpOp;
 themeFormatLiteralOp#8e4f9208 = TypedOpOp;

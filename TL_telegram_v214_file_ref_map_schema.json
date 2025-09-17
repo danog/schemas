@@ -535,6 +535,17 @@
             "type": "TypedOpOp"
         },
         {
+            "id": "-38562396",
+            "predicate": "bytesLiteralOp",
+            "params": [
+                {
+                    "name": "value",
+                    "type": "bytes"
+                }
+            ],
+            "type": "TypedOpOp"
+        },
+        {
             "id": "937457937",
             "predicate": "boolLiteralOp",
             "params": [
