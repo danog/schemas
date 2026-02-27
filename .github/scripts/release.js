@@ -2,7 +2,6 @@
 
 const fs = require('node:fs/promises');
 const path = require('node:path');
-const crypto = require('node:crypto');
 
 const MAX_RETRIES = Number(process.env.RELEASE_MAX_RETRIES || 8);
 const BASE_RETRY_MS = Number(process.env.RELEASE_BASE_RETRY_MS || 2000);
@@ -121,10 +120,6 @@ async function listReleaseFiles() {
     .sort((a, b) => a.localeCompare(b));
 }
 
-function hashBuffer(buffer) {
-  return crypto.createHash('sha256').update(buffer).digest('hex');
-}
-
 async function isAssetContentEqual(asset, localContent, apiHeaders) {
   if (typeof asset.size === 'number' && asset.size !== localContent.length) {
     return false;
@@ -137,7 +132,7 @@ async function isAssetContentEqual(asset, localContent, apiHeaders) {
     }
   });
 
-  return hashBuffer(remoteContent) === hashBuffer(localContent);
+  return remoteContent.equals(localContent);
 }
 
 function getContentType(fileName) {
