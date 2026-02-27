@@ -2,17 +2,21 @@ name: Main
 
 on: push
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Release
-        uses: softprops/action-gh-release@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          tag_name: latest
-          files: |
-            *.json
-            *.tl
-            *.dat
+          node-version: 20
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: latest
+        run: node .github/scripts/release.js
