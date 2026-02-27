@@ -2,12 +2,13 @@
 
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const crypto = require('node:crypto');
 
 const MAX_RETRIES = Number(process.env.RELEASE_MAX_RETRIES || 8);
 const BASE_RETRY_MS = Number(process.env.RELEASE_BASE_RETRY_MS || 2000);
-const UPLOAD_DELAY_MS = Number(process.env.RELEASE_UPLOAD_DELAY_MS || 700);
 const RELEASE_TAG = process.env.RELEASE_TAG || 'latest';
 const API_BASE = process.env.GITHUB_API_URL || 'https://api.github.com';
+const ALLOWED_EXTENSIONS = new Set(['.json', '.tl', '.dat']);
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -81,6 +82,27 @@ async function githubRequest(url, options = {}, attempt = 0) {
   throw error;
 }
 
+async function githubRequestBinary(url, options = {}, attempt = 0) {
+  const response = await fetch(url, options);
+
+  if (response.ok) {
+    const body = await response.arrayBuffer();
+    return Buffer.from(body);
+  }
+
+  const bodyText = await response.text();
+  if (attempt < MAX_RETRIES && isRetryable(response.status, bodyText)) {
+    const delayMs = parseRetryDelayMs(response, attempt);
+    console.log(`Request throttled (${response.status}). Sleeping ${delayMs}ms before retry ${attempt + 1}/${MAX_RETRIES}...`);
+    await sleep(delayMs);
+    return githubRequestBinary(url, options, attempt + 1);
+  }
+
+  const error = new Error(`GitHub API request failed: ${response.status} ${response.statusText} ${bodyText}`);
+  error.status = response.status;
+  throw error;
+}
+
 function getRequiredEnv(name) {
   const value = process.env[name];
   if (!value) {
@@ -91,13 +113,31 @@ function getRequiredEnv(name) {
 
 async function listReleaseFiles() {
   const entries = await fs.readdir(process.cwd(), { withFileTypes: true });
-  const allowedExtensions = new Set(['.json', '.tl', '.dat']);
 
   return entries
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name)
-    .filter((name) => allowedExtensions.has(path.extname(name)))
+    .filter((name) => ALLOWED_EXTENSIONS.has(path.extname(name)))
     .sort((a, b) => a.localeCompare(b));
+}
+
+function hashBuffer(buffer) {
+  return crypto.createHash('sha256').update(buffer).digest('hex');
+}
+
+async function isAssetContentEqual(asset, localContent, apiHeaders) {
+  if (typeof asset.size === 'number' && asset.size !== localContent.length) {
+    return false;
+  }
+
+  const remoteContent = await githubRequestBinary(asset.url, {
+    headers: {
+      ...apiHeaders,
+      Accept: 'application/octet-stream'
+    }
+  });
+
+  return hashBuffer(remoteContent) === hashBuffer(localContent);
 }
 
 function getContentType(fileName) {
@@ -167,18 +207,38 @@ async function main() {
 
   const existingAssets = new Map((release.assets || []).map((asset) => [asset.name, asset]));
   const uploadBaseUrl = release.upload_url.replace('{?name,label}', '');
+  const localFileSet = new Set(files);
+
+  for (const asset of release.assets || []) {
+    const ext = path.extname(asset.name || '');
+    if (ALLOWED_EXTENSIONS.has(ext) && !localFileSet.has(asset.name)) {
+      console.log(`Deleting removed local asset ${asset.name} (id: ${asset.id}).`);
+      await githubRequest(`${API_BASE}/repos/${owner}/${repo}/releases/assets/${asset.id}`, {
+        method: 'DELETE',
+        headers: apiHeaders
+      });
+      existingAssets.delete(asset.name);
+    }
+  }
 
   for (const fileName of files) {
     const existingAsset = existingAssets.get(fileName);
+    const content = await fs.readFile(path.join(process.cwd(), fileName));
+
     if (existingAsset) {
-      console.log(`Deleting existing asset ${fileName} (id: ${existingAsset.id}).`);
+      const unchanged = await isAssetContentEqual(existingAsset, content, apiHeaders);
+      if (unchanged) {
+        console.log(`Skipping unchanged asset ${fileName}.`);
+        continue;
+      }
+
+      console.log(`Replacing changed asset ${fileName} (id: ${existingAsset.id}).`);
       await githubRequest(`${API_BASE}/repos/${owner}/${repo}/releases/assets/${existingAsset.id}`, {
         method: 'DELETE',
         headers: apiHeaders
       });
     }
 
-    const content = await fs.readFile(path.join(process.cwd(), fileName));
     const uploadUrl = `${uploadBaseUrl}?name=${encodeURIComponent(fileName)}`;
 
     console.log(`Uploading ${fileName}...`);
@@ -191,8 +251,6 @@ async function main() {
       },
       body: content
     });
-
-    await sleep(UPLOAD_DELAY_MS);
   }
 
   console.log(`Release ${RELEASE_TAG} updated successfully with ${files.length} assets.`);
