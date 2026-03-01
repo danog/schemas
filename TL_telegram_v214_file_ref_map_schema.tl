@@ -5,14 +5,14 @@ true#3fedd339 = True;
 vector#1cb5c415 {t:Type} # [ t ] = Vector t;
 
 // Root
-fileReferenceOrigins#ed01a4f1 db_schema:string db_schema_json:string locations:Vector<Location> origins:Vector<Origin> skipped:Vector<SkippedOrigin> actions:Vector<Action> = FileReferenceOrigins;
+fileReferenceMap#4dba8c2c db_schema:string db_schema_json:string locations:Vector<Location> sources:Vector<Source> skipped:Vector<SkippedSource> actions:Vector<Action> = FileReferenceMap;
 
 locationIncoming#e18770f4 predicate:string stored_constructor:string = Location;
 locationOutgoing#e7740ae0 predicate:string stored_constructor:string = Location;
 
-origin#b62177bf flags:# predicate:string is_constructor:flags.0?true stored_constructor:string stored_params:Vector<FieldExtractor> skipped_flags:Vector<string> needs_parent:flags.3?string parent_is_constructor:flags.4?true = origin;
+source#dd27c696 flags:# predicate:string is_constructor:flags.0?true stored_constructor:string stored_params:Vector<FieldExtractor> skipped_flags:Vector<string> needs_parent:flags.3?string parent_is_constructor:flags.4?true = Source;
 
-skippedOrigin#7c62809e flags:# predicate:string is_constructor:flags.0?true why:string = SkippedOrigin;
+skippedSource#1d53cd15 flags:# predicate:string is_constructor:flags.0?true why:string = SkippedSource;
 
 action#9539f410 stored_constructor:string action:ActionOp = Action;
 

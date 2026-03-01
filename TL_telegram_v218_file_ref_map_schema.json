@@ -25,8 +25,8 @@
             "type": "Vector t"
         },
         {
-            "id": "-318659343",
-            "predicate": "fileReferenceOrigins",
+            "id": "1304071212",
+            "predicate": "fileReferenceMap",
             "params": [
                 {
                     "name": "db_schema",
@@ -41,19 +41,19 @@
                     "type": "Vector<Location>"
                 },
                 {
-                    "name": "origins",
-                    "type": "Vector<Origin>"
+                    "name": "sources",
+                    "type": "Vector<Source>"
                 },
                 {
                     "name": "skipped",
-                    "type": "Vector<SkippedOrigin>"
+                    "type": "Vector<SkippedSource>"
                 },
                 {
                     "name": "actions",
                     "type": "Vector<Action>"
                 }
             ],
-            "type": "FileReferenceOrigins"
+            "type": "FileReferenceMap"
         },
         {
             "id": "-511217420",
@@ -86,8 +86,8 @@
             "type": "Location"
         },
         {
-            "id": "-1239320641",
-            "predicate": "origin",
+            "id": "-584595818",
+            "predicate": "source",
             "params": [
                 {
                     "name": "flags",
@@ -122,11 +122,11 @@
                     "type": "flags.4?true"
                 }
             ],
-            "type": "origin"
+            "type": "Source"
         },
         {
-            "id": "2086830238",
-            "predicate": "skippedOrigin",
+            "id": "492031253",
+            "predicate": "skippedSource",
             "params": [
                 {
                     "name": "flags",
@@ -145,7 +145,7 @@
                     "type": "string"
                 }
             ],
-            "type": "SkippedOrigin"
+            "type": "SkippedSource"
         },
         {
             "id": "-1791364080",
