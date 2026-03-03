@@ -25,9 +25,13 @@
             "type": "Vector t"
         },
         {
-            "id": "1304071212",
+            "id": "679692403",
             "predicate": "fileReferenceMap",
             "params": [
+                {
+                    "name": "layer",
+                    "type": "int"
+                },
                 {
                     "name": "db_schema",
                     "type": "string"

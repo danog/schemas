@@ -5,7 +5,7 @@ true#3fedd339 = True;
 vector#1cb5c415 {t:Type} # [ t ] = Vector t;
 
 // Root
-fileReferenceMap#4dba8c2c db_schema:string db_schema_json:string locations:Vector<Location> sources:Vector<Source> skipped:Vector<SkippedSource> actions:Vector<Action> = FileReferenceMap;
+fileReferenceMap#28834873 layer:int db_schema:string db_schema_json:string locations:Vector<Location> sources:Vector<Source> skipped:Vector<SkippedSource> actions:Vector<Action> = FileReferenceMap;
 
 locationIncoming#e18770f4 predicate:string stored_constructor:string = Location;
 locationOutgoing#e7740ae0 predicate:string stored_constructor:string = Location;
