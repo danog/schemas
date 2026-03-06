@@ -60,7 +60,60 @@
             "type": "FileReferenceMap"
         },
         {
-            "id": "-511217420",
+            "id": "-1861181580",
+            "predicate": "traverseParam",
+            "params": [
+                {
+                    "name": "flags",
+                    "type": "#"
+                },
+                {
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "name": "is_flag",
+                    "type": "flags.0?true"
+                },
+                {
+                    "name": "is_vector",
+                    "type": "flags.1?true"
+                }
+            ],
+            "type": "TraverseParam"
+        },
+        {
+            "id": "-612602635",
+            "predicate": "traverseConstructor",
+            "params": [
+                {
+                    "name": "predicate",
+                    "type": "string"
+                },
+                {
+                    "name": "params",
+                    "type": "Vector<TraverseParam>"
+                }
+            ],
+            "type": "TraversePart"
+        },
+        {
+            "id": "-1816492855",
+            "predicate": "traverseMethod",
+            "params": [
+                {
+                    "name": "predicate",
+                    "type": "string"
+                },
+                {
+                    "name": "params",
+                    "type": "Vector<TraverseParam>"
+                }
+            ],
+            "type": "TraversePart"
+        },
+        {
+            "id": "-1637001781",
             "predicate": "locationIncoming",
             "params": [
                 {
@@ -70,12 +123,16 @@
                 {
                     "name": "stored_constructor",
                     "type": "string"
+                },
+                {
+                    "name": "traverse",
+                    "type": "Vector<TraversePart>"
                 }
             ],
             "type": "Location"
         },
         {
-            "id": "-411825440",
+            "id": "1406298894",
             "predicate": "locationOutgoing",
             "params": [
                 {
@@ -85,6 +142,10 @@
                 {
                     "name": "stored_constructor",
                     "type": "string"
+                },
+                {
+                    "name": "traverse",
+                    "type": "Vector<TraversePart>"
                 }
             ],
             "type": "Location"
