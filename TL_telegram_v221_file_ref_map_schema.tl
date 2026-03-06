@@ -7,8 +7,13 @@ vector#1cb5c415 {t:Type} # [ t ] = Vector t;
 // Root
 fileReferenceMap#28834873 layer:int db_schema:string db_schema_json:string locations:Vector<Location> sources:Vector<Source> skipped:Vector<SkippedSource> actions:Vector<Action> = FileReferenceMap;
 
-locationIncoming#e18770f4 predicate:string stored_constructor:string = Location;
-locationOutgoing#e7740ae0 predicate:string stored_constructor:string = Location;
+traverseParam#91109f74 flags:# name:string is_flag:flags.0?true is_vector:flags.1?true = TraverseParam;
+
+traverseConstructor#db7c6cf5 predicate:string params:Vector<TraverseParam> = TraversePart;
+traverseMethod#93ba84c9 predicate:string params:Vector<TraverseParam> = TraversePart;
+
+locationIncoming#9e6d55cb predicate:string stored_constructor:string traverse:Vector<TraversePart> = Location;
+locationOutgoing#53d26b0e predicate:string stored_constructor:string traverse:Vector<TraversePart> = Location;
 
 source#dd27c696 flags:# predicate:string is_constructor:flags.0?true stored_constructor:string stored_params:Vector<FieldExtractor> skipped_flags:Vector<string> needs_parent:flags.3?string parent_is_constructor:flags.4?true = Source;
 
