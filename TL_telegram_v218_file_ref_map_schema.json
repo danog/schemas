@@ -25,7 +25,7 @@
             "type": "Vector t"
         },
         {
-            "id": "679692403",
+            "id": "1923715664",
             "predicate": "fileReferenceMap",
             "params": [
                 {
@@ -41,26 +41,26 @@
                     "type": "string"
                 },
                 {
-                    "name": "locations",
-                    "type": "Vector<Location>"
+                    "name": "traversers_incoming",
+                    "type": "Vector<TraverserIncoming>"
                 },
                 {
-                    "name": "sources",
-                    "type": "Vector<Source>"
+                    "name": "traversers_outgoing",
+                    "type": "Vector<TraverserOutgoing>"
                 },
                 {
-                    "name": "skipped",
+                    "name": "refresh_actions",
+                    "type": "Vector<RefreshAction>"
+                },
+                {
+                    "name": "skipped_incoming_sources",
                     "type": "Vector<SkippedSource>"
-                },
-                {
-                    "name": "actions",
-                    "type": "Vector<Action>"
                 }
             ],
             "type": "FileReferenceMap"
         },
         {
-            "id": "-1861181580",
+            "id": "1645615975",
             "predicate": "traverseParam",
             "params": [
                 {
@@ -78,14 +78,22 @@
                 {
                     "name": "is_vector",
                     "type": "flags.1?true"
+                },
+                {
+                    "name": "type",
+                    "type": "string"
                 }
             ],
             "type": "TraverseParam"
         },
         {
-            "id": "-612602635",
-            "predicate": "traverseConstructor",
+            "id": "1850540214",
+            "predicate": "traverseIncomingConstructor",
             "params": [
+                {
+                    "name": "type",
+                    "type": "string"
+                },
                 {
                     "name": "predicate",
                     "type": "string"
@@ -93,62 +101,59 @@
                 {
                     "name": "params",
                     "type": "Vector<TraverseParam>"
+                },
+                {
+                    "name": "push_sources",
+                    "type": "Vector<Source>"
+                },
+                {
+                    "name": "is_needed_parent",
+                    "type": "Bool"
                 }
             ],
-            "type": "TraversePart"
+            "type": "TraverserIncoming"
         },
         {
-            "id": "-1816492855",
-            "predicate": "traverseMethod",
+            "id": "-1798547003",
+            "predicate": "traverseCommitSourceLocation",
             "params": [
+                {
+                    "name": "type",
+                    "type": "string"
+                },
                 {
                     "name": "predicate",
                     "type": "string"
                 },
                 {
-                    "name": "params",
-                    "type": "Vector<TraverseParam>"
-                }
-            ],
-            "type": "TraversePart"
-        },
-        {
-            "id": "-1637001781",
-            "predicate": "locationIncoming",
-            "params": [
-                {
-                    "name": "predicate",
-                    "type": "string"
+                    "name": "push_sources",
+                    "type": "Vector<Source>"
                 },
                 {
                     "name": "stored_constructor",
                     "type": "string"
-                },
-                {
-                    "name": "traverse",
-                    "type": "Vector<TraversePart>"
                 }
             ],
-            "type": "Location"
+            "type": "TraverserIncoming"
         },
         {
-            "id": "1406298894",
-            "predicate": "locationOutgoing",
+            "id": "-39194058",
+            "predicate": "traverseMethodResult",
             "params": [
                 {
-                    "name": "predicate",
+                    "name": "name",
                     "type": "string"
                 },
                 {
-                    "name": "stored_constructor",
-                    "type": "string"
+                    "name": "push_sources",
+                    "type": "Vector<Source>"
                 },
                 {
-                    "name": "traverse",
-                    "type": "Vector<TraversePart>"
+                    "name": "is_needed_parent",
+                    "type": "Bool"
                 }
             ],
-            "type": "Location"
+            "type": "TraverserIncoming"
         },
         {
             "id": "-584595818",
@@ -190,6 +195,59 @@
             "type": "Source"
         },
         {
+            "id": "1069875821",
+            "predicate": "traverseOutgoingConstructor",
+            "params": [
+                {
+                    "name": "type",
+                    "type": "string"
+                },
+                {
+                    "name": "predicate",
+                    "type": "string"
+                },
+                {
+                    "name": "params",
+                    "type": "Vector<TraverseParam>"
+                }
+            ],
+            "type": "TraverserOutgoing"
+        },
+        {
+            "id": "53213533",
+            "predicate": "traverseSwapLocation",
+            "params": [
+                {
+                    "name": "type",
+                    "type": "string"
+                },
+                {
+                    "name": "predicate",
+                    "type": "string"
+                },
+                {
+                    "name": "stored_constructor",
+                    "type": "string"
+                }
+            ],
+            "type": "TraverserOutgoing"
+        },
+        {
+            "id": "-1840974405",
+            "predicate": "traverseMethodCall",
+            "params": [
+                {
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "name": "params",
+                    "type": "Vector<TraverseParam>"
+                }
+            ],
+            "type": "TraverserOutgoing"
+        },
+        {
             "id": "492031253",
             "predicate": "skippedSource",
             "params": [
@@ -213,8 +271,8 @@
             "type": "SkippedSource"
         },
         {
-            "id": "-1791364080",
-            "predicate": "action",
+            "id": "-723429751",
+            "predicate": "refreshAction",
             "params": [
                 {
                     "name": "stored_constructor",
@@ -225,7 +283,7 @@
                     "type": "ActionOp"
                 }
             ],
-            "type": "Action"
+            "type": "RefreshAction"
         },
         {
             "id": "-1395010097",
@@ -257,15 +315,23 @@
             "type": "ParamFlag"
         },
         {
-            "id": "-1916338362",
+            "id": "429985727",
             "predicate": "pathPart",
             "params": [
+                {
+                    "name": "type",
+                    "type": "string"
+                },
                 {
                     "name": "constructor",
                     "type": "string"
                 },
                 {
                     "name": "param",
+                    "type": "string"
+                },
+                {
+                    "name": "param_type",
                     "type": "string"
                 },
                 {
