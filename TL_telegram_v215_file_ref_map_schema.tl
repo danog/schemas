@@ -5,11 +5,7 @@ true#3fedd339 = True;
 vector#1cb5c415 {t:Type} # [ t ] = Vector t;
 
 // Root
-fileReferenceMap#2bf135d1 layer:int db_schema:string db_schema_json:string locations:Vector<Location> sources:Vector<Source> traversers_incoming:Vector<TraverserIncoming> traversers_outgoing:Vector<TraverserOutgoing> refresh_actions:Vector<RefreshAction> skipped_incoming_sources:Vector<SkippedSource> = FileReferenceMap;
-
-// Locations
-locationIncoming#accbfe76 type:string predicate:string stored_constructor:string = Location;
-locationOutgoing#37396c92 type:string predicate:string stored_constructor:string = Location;
+fileReferenceMap#72a99250 layer:int db_schema:string db_schema_json:string traversers_incoming:Vector<TraverserIncoming> traversers_outgoing:Vector<TraverserOutgoing> refresh_actions:Vector<RefreshAction> skipped_incoming_sources:Vector<SkippedSource> = FileReferenceMap;
 
 // Traversers (incoming)
 traverseParam#62161b67 flags:# name:string is_flag:flags.0?true is_vector:flags.1?true type:string = TraverseParam;
