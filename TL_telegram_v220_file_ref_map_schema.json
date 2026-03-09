@@ -25,7 +25,7 @@
             "type": "Vector t"
         },
         {
-            "id": "1923715664",
+            "id": "737228241",
             "predicate": "fileReferenceMap",
             "params": [
                 {
@@ -39,6 +39,14 @@
                 {
                     "name": "db_schema_json",
                     "type": "string"
+                },
+                {
+                    "name": "locations",
+                    "type": "Vector<Location>"
+                },
+                {
+                    "name": "sources",
+                    "type": "Vector<Source>"
                 },
                 {
                     "name": "traversers_incoming",
@@ -58,6 +66,44 @@
                 }
             ],
             "type": "FileReferenceMap"
+        },
+        {
+            "id": "-1395917194",
+            "predicate": "locationIncoming",
+            "params": [
+                {
+                    "name": "type",
+                    "type": "string"
+                },
+                {
+                    "name": "predicate",
+                    "type": "string"
+                },
+                {
+                    "name": "stored_constructor",
+                    "type": "string"
+                }
+            ],
+            "type": "Location"
+        },
+        {
+            "id": "926510226",
+            "predicate": "locationOutgoing",
+            "params": [
+                {
+                    "name": "type",
+                    "type": "string"
+                },
+                {
+                    "name": "predicate",
+                    "type": "string"
+                },
+                {
+                    "name": "stored_constructor",
+                    "type": "string"
+                }
+            ],
+            "type": "Location"
         },
         {
             "id": "1645615975",
