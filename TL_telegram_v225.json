@@ -40156,7 +40156,7 @@
             "type": "messages.AffectedHistory"
         },
         {
-            "id": "86706395",
+            "id": "-1192163613",
             "method": "messages.setBotGuestChatResult",
             "params": [
                 {
@@ -40168,7 +40168,7 @@
                     "type": "InputBotInlineResult"
                 }
             ],
-            "type": "Bool"
+            "type": "InputBotInlineMessageID"
         },
         {
             "id": "-1598550792",
