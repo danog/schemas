@@ -14,7 +14,10 @@ traverseMethodResult#fda9f236 name:string push_sources:Vector<Source> is_needed_
 traverseIncomingConstructor#6e4d00b6 type:string predicate:string params:Vector<TraverseParam> push_sources:Vector<Source> is_needed_parent:Bool = TraverserIncoming;
 traverseCommitSourceLocation#94cc59c5 type:string predicate:string push_sources:Vector<Source> stored_constructor:string = TraverserIncoming;
 
-source#dd27c696 flags:# predicate:string is_constructor:flags.0?true stored_constructor:string stored_params:Vector<FieldExtractor> skipped_flags:Vector<string> needs_parent:flags.3?string parent_is_constructor:flags.4?true = Source;
+// Points to a constructor or method
+predicate#de3bc05a predicate:string is_constructor:Bool = Predicate;
+
+source#4ec4751a flags:# predicate:Predicate stored_constructor:string stored_params:Vector<FieldExtractor> skipped_flags:Vector<string> needs_parent:flags.3?Predicate needs_not_parents:Vector<Predicate> = Source;
 
 // Traversers (outgoing)
 traverseOutgoingConstructor#3fc5026d type:string predicate:string params:Vector<TraverseParam> = TraverserOutgoing;
@@ -22,7 +25,7 @@ traverseSwapLocation#032bf95d type:string predicate:string stored_constructor:st
 traverseMethodCall#9244f5bb name:string params:Vector<TraverseParam> = TraverserOutgoing;
 
 // Skipped sources
-skippedSource#1d53cd15 flags:# predicate:string is_constructor:flags.0?true why:string = SkippedSource;
+skippedSource#2b543f6f predicate:Predicate why:string = SkippedSource;
 
 // Refresh actions
 refreshAction#d4e15689 stored_constructor:string action:ActionOp = RefreshAction;
@@ -55,7 +58,7 @@ extractUserIdFromInputUserAndStore#7720aa2e from:Path to:string = FieldExtractor
 
 // Actions
 callOp#c2ff3383 method:string args:Vector<TypedOpArg> = ActionOp;
-getMessageOp#237849e8 peer:TypedOp id:TypedOp from_scheduled:TypedOp quick_reply_shortcut_id:TypedOp = ActionOp;
+getMessageOp#8da4c2ae peer:TypedOp id:TypedOp quick_reply_shortcut_id:TypedOp = ActionOp;
 
 // For string => TypedOp dictionaries
 typedOpArg#3a2930c2 key:string value:TypedOp = TypedOpArg;

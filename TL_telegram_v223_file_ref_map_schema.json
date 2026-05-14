@@ -156,7 +156,22 @@
             "type": "TraverserIncoming"
         },
         {
-            "id": "-584595818",
+            "id": "-566509478",
+            "predicate": "predicate",
+            "params": [
+                {
+                    "name": "predicate",
+                    "type": "string"
+                },
+                {
+                    "name": "is_constructor",
+                    "type": "Bool"
+                }
+            ],
+            "type": "Predicate"
+        },
+        {
+            "id": "1321497882",
             "predicate": "source",
             "params": [
                 {
@@ -165,11 +180,7 @@
                 },
                 {
                     "name": "predicate",
-                    "type": "string"
-                },
-                {
-                    "name": "is_constructor",
-                    "type": "flags.0?true"
+                    "type": "Predicate"
                 },
                 {
                     "name": "stored_constructor",
@@ -185,11 +196,11 @@
                 },
                 {
                     "name": "needs_parent",
-                    "type": "flags.3?string"
+                    "type": "flags.3?Predicate"
                 },
                 {
-                    "name": "parent_is_constructor",
-                    "type": "flags.4?true"
+                    "name": "needs_not_parents",
+                    "type": "Vector<Predicate>"
                 }
             ],
             "type": "Source"
@@ -248,20 +259,12 @@
             "type": "TraverserOutgoing"
         },
         {
-            "id": "492031253",
+            "id": "726941551",
             "predicate": "skippedSource",
             "params": [
                 {
-                    "name": "flags",
-                    "type": "#"
-                },
-                {
                     "name": "predicate",
-                    "type": "string"
-                },
-                {
-                    "name": "is_constructor",
-                    "type": "flags.0?true"
+                    "type": "Predicate"
                 },
                 {
                     "name": "why",
@@ -514,7 +517,7 @@
             "type": "ActionOp"
         },
         {
-            "id": "595085800",
+            "id": "-1918582098",
             "predicate": "getMessageOp",
             "params": [
                 {
@@ -523,10 +526,6 @@
                 },
                 {
                     "name": "id",
-                    "type": "TypedOp"
-                },
-                {
-                    "name": "from_scheduled",
                     "type": "TypedOp"
                 },
                 {
