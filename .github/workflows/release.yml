@@ -1,6 +1,11 @@
 name: Main
 
-on: push
+on:
+  push:
+    # Not the branches of pull requests (like the daily build of MadelineProto's): every installation of
+    # MadelineProto would download their schemas.
+    branches:
+      - master
 
 permissions:
   contents: write
